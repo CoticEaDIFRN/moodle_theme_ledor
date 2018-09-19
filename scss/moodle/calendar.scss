@@ -106,7 +106,7 @@ $calendarEventUserColor: #dce7ec !default; // Pale blue.
                     list-style-type: none;
 
                     > a {
-                        @include text-truncate;
+                        
                         max-width: 100%;
                         display: inline-block;
 

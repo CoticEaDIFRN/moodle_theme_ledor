@@ -49,18 +49,6 @@
     width: 162px;
 }
 
-@include media-breakpoint-down(xs) {
-    .search-input-wrapper {
-        > div {
-            margin: 0;
-        }
-
-        > form {
-            display: none;
-        }
-        margin: 0 $spacer 0 0;
-    }
-}
 
 .search-areas-actions {
     margin-bottom: $spacer;

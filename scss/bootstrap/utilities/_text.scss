@@ -8,19 +8,8 @@
 
 .text-justify  { text-align: justify !important; }
 .text-nowrap   { white-space: nowrap !important; }
-.text-truncate { @include text-truncate; }
 
 // Responsive alignment
-
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-    .text#{$infix}-left   { text-align: left !important; }
-    .text#{$infix}-right  { text-align: right !important; }
-    .text#{$infix}-center { text-align: center !important; }
-  }
-}
 
 // Transformation
 
@@ -40,7 +29,7 @@
 .text-white { color: #fff !important; }
 
 @each $color, $value in $theme-colors {
-  @include text-emphasis-variant(".text-#{$color}", $value);
+  
 }
 
 .text-muted { color: $text-muted !important; }
@@ -48,5 +37,5 @@
 // Misc
 
 .text-hide {
-  @include text-hide();
+  
 }

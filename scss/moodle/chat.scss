@@ -68,7 +68,7 @@
 
         .chat-message.course-theme {
             margin-bottom: $card-spacer-y;
-            @include border-radius($card-border-radius);
+            
             border: $card-border-width solid $card-border-color;
             padding: $card-spacer-x;
 

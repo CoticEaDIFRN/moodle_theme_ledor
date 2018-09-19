@@ -69,14 +69,30 @@ $theme-colors: (
     dark: $gray-800
 );
 
+
 // Import FontAwesome.
-@import "fontawesome";
+// @import "fontawesome/variables";
 
 // Import All of Bootstrap
-@import "bootstrap";
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+
+.text-muted, 
+.text-warning, .text-success, .text-danger, .text-info,
+.tag-success, .tag-warning, .tag-danger, .tag-info,
+.alert-success, .alert-warning, .alert-danger, .alert-info,
+.table-success, .table-warning, .table-danger, .table-info,
+.modal-content, .modal-header, .modal-title, .close, .modal-footer,
+.table, .table-bordered, .table-striped, .table-sm,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.btn, .btn-secondary, .btn-primary, .btn-default, .btn-success, .btn-warning, .btn-danger, .btn-info,
+.btn-secondary.active, .btn-secondary.disabled, .btn.disabled, .btn-block, .btn-lg,
+.card-body, .lead, .img-fluid, .p-0, .table-hover
+.active
+  {color: inherit; }
 
 // Import Core moodle CSS
-@import "moodle";
+// @import "moodle";
 
 // Preset CSS
 
@@ -90,7 +106,6 @@ body {
 
 .filemanager-container,
 .filepicker-filelist {
-    @extend .border;
 }
 
 // Rounded user pictures

@@ -56,12 +56,6 @@ body.drawer-ease {
 }
 
 body.drawer-open-left {
-    @include media-breakpoint-up(md) {
-        margin-left: $drawer-width;
-    }
 }
 body.drawer-open-right {
-    @include media-breakpoint-up(md) {
-        margin-right: $drawer-width;
-    }
 }

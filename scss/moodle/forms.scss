@@ -248,7 +248,7 @@ fieldset.coursesearchbox label {
 .availability-inner,
 .availability-plugincontrols {
     float: left;
-    @include border-radius($card-border-radius);
+    
     border: $card-border-width solid $card-border-color;
     padding: 1rem;
     margin-top: 0.5rem;
@@ -376,16 +376,6 @@ textarea[data-auto-rows] {
 
 /** Allow wrapping an mform in a div with the form-inline class to have an inline, responsive form. */
 .form-inline {
-    @include media-breakpoint-up(md) {
-        .col-md-9,
-        .col-md-3 {
-            label {
-                margin-left: 1rem;
-            }
-            margin-bottom: 1rem;
-            width: auto;
-        }
-    }
 }
 
 [data-fieldtype="modgrade"] .form-group {
@@ -395,7 +385,7 @@ textarea[data-auto-rows] {
 // We dont' use the mixin because it's expensive.
 [data-fieldtype="modgrade"] {
     background-color: $card-bg;
-    @include border-radius($card-border-radius);
+    
     border: $card-border-width solid $card-border-color;
     padding: $card-spacer-x;
     margin-left: $grid-gutter-width / 2;
@@ -406,7 +396,7 @@ textarea[data-auto-rows] {
     So they need these extra styles to highlight the editor when there is a validation error. */
 .has-danger .editor_atto_content.form-control,
 .has-danger .editor_atto_content.form-control-danger {
-    @include form-control-validation($brand-danger);
+    
     background-image: $form-icon-danger;
     padding-right: ($input-padding-x * 3);
     background-repeat: no-repeat;
@@ -432,23 +422,4 @@ textarea[data-auto-rows] {
 // Show editor at 100% width by default.
 [data-fieldtype="editor"] > div {
     flex-grow: 1;
-}
-
-@include media-breakpoint-up(sm) {
-    .mform fieldset {
-        margin-left: $spacer * 1.5;
-    }
-    .mform fieldset.collapsible legend a.fheader {
-        padding: 0 5px 0 ($spacer * 1.5);
-        margin-left: -($spacer * 1.5);
-        background: url([[pix:t/expanded]]) 0 center no-repeat;
-    }
-
-    .mform fieldset.collapsed legend a.fheader {
-        /*rtl:raw:
-        background-image: url([[pix:t/collapsed_rtl]]);
-        */
-        /*rtl:remove*/
-        background-image: url([[pix:t/collapsed]]);
-    }
 }
