@@ -37,5 +37,26 @@
         </nav>
         {{{ output.standard_footer_html }}}
         {{{ output.standard_end_of_body_html }}}
+
+        <ul class="navbar-nav d-none d-md-flex">
+            <!-- custom_menu -->
+            {{{ output.custom_menu }}}
+            <!-- page_heading_menu -->
+            {{{ output.page_heading_menu }}}
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+            <div class="d-none d-lg-block">
+            {{{ output.search_box }}}
+        </div>
+            <!-- navbar_plugin_output -->
+            <li class="nav-item">
+            {{{ output.navbar_plugin_output }}}
+            </li>
+            <!-- user_menu -->
+            <li class="nav-item d-flex align-items-center">
+                {{{ output.user_menu }}}
+            </li>
+        </ul>
+        <!-- search_box -->
     </div>
 </footer>
