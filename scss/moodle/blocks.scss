@@ -185,11 +185,11 @@ $doughnut-fill-colour: $brand-warning;
     }
 
     .empty-placeholder-image-sm {
-        height: 50px;
+        display: none;
     }
 
     .empty-placeholder-image-lg {
-        height: 125px;
+        display: none;
     }
 }
 

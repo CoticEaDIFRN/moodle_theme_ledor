@@ -112,3 +112,29 @@ body {
 .userpicture {
     border-radius: 50%;
 }
+
+// ==============================================================================
+// ================================ CSS LEDOR ===================================
+// ==============================================================================
+
+// Imagens que apareciam na tela do My
+.empty-placeholder-image-sm {
+    display: none;
+}
+
+.empty-placeholder-image-lg {
+    display: none;
+}
+
+// Imagens de porcentagem de conclusão de disciplina
+[class*="circle percent-"] {
+    display: none;
+}
+
+.progress-indicator {
+    display: none;
+}
+
+.avatar.current {
+    display: none;
+}
