@@ -1,0 +1,243 @@
+<div class="fp-upload-form">
+    {{#options}}
+    <div class="fp-content-center">
+        <form enctype="multipart/form-data" method="POST" class="form">
+            <div class="fp-formset">
+                <div class="fp-file form-group">
+                    <input id="fileToUpload_{{client_id}}" type="file" class="fileToUpload" style="display: none;" 
+                           data-client_id="{{client_id}}" 
+                           data-title="{{title}}" 
+                           data-author="{{author}}" 
+                           data-license="{{defaultlicense}}" 
+                           data-itemid="{{itemid}}" 
+                           data-p="{{p}}" 
+                           data-page="{{page}}" 
+                           data-env="filemanager" 
+                           data-sesskey="{{sesskey}}" 
+                           data-itemid="{{itemid}}" 
+                           data-maxbytes="{{maxbytes}}" 
+                           data-areamaxbytes="{{areamaxbytes}}" 
+                           data-ctx_id="{{context.id}}" 
+                           data-savepath="{{path.0.path}}" 
+                           data-repo_id="4" 
+                           />
+                    <input type="button" value="Adicionar arquivo"  data-client_id="{{client_id}}" class="fileToUploadButton"  />
+                </div>
+                <div hidden="hidden" class="fp-saveas form-group">
+                    <label>{{#str}}saveas, repository{{/str}}</label>
+                    <input type="text" class="form-control"/>
+                </div>
+                <div hidden="hidden" class="fp-setauthor form-group">
+                    <label>{{#str}}author, repository{{/str}}</label>
+                    <input type="text" class="form-control"/>
+                </div>
+                <div hidden="hidden" class="fp-setlicense control-group">
+                    <label>{{#str}}chooselicense, repository{{/str}}</label>
+                    <select class="custom-select"></select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="filemanager-{{{client_id}}}" class="filemanager w-100 fm-loading">
+        <p><br>Arquivos adicionados:</p>
+        <ol id="fileToUploadList_{{client_id}}">
+        </ol>
+    </div>
+    {{/options}}
+</div>
+
+
+
+
+
+
+
+
+{{#js}}
+function ledor_readble_filesize(file) {
+    if (file.size > 1024 * 1024){
+        fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';
+    }
+    else{
+        fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';
+    }
+    return fileSize;
+}
+
+// Read cookie
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1,c.length);
+        }
+        if (c.indexOf(nameEQ) === 0) {
+            return c.substring(nameEQ.length,c.length);
+        }
+    }
+    return null;
+}
+
+require(
+    ['jquery'], 
+    function($){
+        var soundSelect = null; 
+        var rootMoodle = "/moodle";
+        var uploadUrl = rootMoodle + "/repository/repository_ajax.php?action=upload";
+
+        console.log($(".fileToUpload")[0].dataset);
+        $('.fileToUploadButton').click(function(evt){
+            // document.getElementById("fileToUpload_" + e.dataset.clientid).click();
+            // $('#fileToUpload_' + e.dataset.client_id).click()
+            console.log("selecione o arquivo...");
+            console.log(this);
+            if (soundSelect == null) {soundSelect = new Audio('../audio/selArquivo.mp3')}
+            soundSelect.play();
+            $(evt.target).prev().click();
+        });
+        
+
+        $('.fileToUpload').change(function(evt){
+            var elem = evt.target;
+
+            for (var index = 0; index < elem.files.length; index ++){
+                var file = elem.files[index];
+
+                var formData = new FormData();
+                formData.append('repo_upload_file', file);
+                for (var key in  elem.dataset) {
+                    formData.append(key, elem.dataset[key])
+                    console.log(key, elem.dataset[key])
+                }
+                formData.append('meusess', readCookie(''))
+                
+                $.ajax({url: uploadUrl, 
+                        type: "POST", 
+                        data: formData,
+                        contentType: false, 
+                        cache: false, 
+                        processData: false, 
+                        success: function(data) {
+                            if (data['error']) {
+                                console.log('paus');
+                                return;
+                            }
+                            console.log('sucesso.');
+                            $('#fileToUploadList_' + elem.dataset.client_id).append('<li><a href="#">' + file.name + '</a> (' + ledor_readble_filesize(file) + ')</li>');
+                        }, 
+                        error: function(data) {
+                            console.log('paus');
+                        }
+                });
+                // RESPONSE: {"url":"http:\/\/localhost\/moodle\/draftfile.php\/5\/user\/draft\/587326704\/exemplo.pdf","id":587326704,"file":"exemplo.pdf"}
+
+                
+            }
+        });
+    }
+);
+
+
+/*
+*/
+
+
+require(
+    ['jquery'], 
+    function($){
+        uploadFile = function (){
+            var fd = new FormData();
+            var count = document.getElementById('fileToUpload').files.length;
+            for (var index = 0; index < count; index ++){
+                var file = document.getElementById('fileToUpload').files[index];
+                fd.append('myFile', file); 
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.upload.addEventListener("progress", uploadProgress, false);
+            xhr.addEventListener("load", uploadComplete, false);
+            xhr.addEventListener("error", uploadFailed, false);
+            xhr.addEventListener("abort", uploadCanceled, false);
+            xhr.open("POST", "#");
+            xhr.send(fd);
+        }
+    }
+);
+
+
+
+
+
+
+
+
+
+
+require(
+    ['jquery'], 
+    function($){
+        uploadProgress = function (evt){
+            if (evt.lengthComputable) {
+            var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+            console.log("enviando... " + percentComplete + "%");
+            audioLoading();            
+
+            }
+        }
+    }
+);
+
+
+function uploadComplete(evt) {
+        console.log("arquivo enviado");
+        audioLoading('stop');
+        audioEnviado();
+}
+
+function uploadFailed(evt) {
+    alert("There was an error attempting to upload the file.");
+}
+
+function uploadCanceled(evt) {
+    alert("The upload has been canceled by the user or the browser dropped the connection.");
+}
+
+
+
+function audioLoading(acao){
+    var soundLoading = new Audio('../audio/bip.mp3'); 
+    if(acao == 'stop'){
+        soundLoading.pause();
+    }
+    else{
+        {{! soundLoading.loop = true; }}
+        soundLoading.play();
+    }
+}
+
+function audioEnviado(acao){
+    var soundEnviado = new Audio('../audio/enviado.mp3'); 
+    if(acao == 'stop'){
+        soundEnviado.pause();
+    }
+    else{
+        soundEnviado.play();
+    }
+}
+        
+function audioEnviando(acao){
+    var soundEnviando = new Audio('../audio/enviando.mp3'); 
+    if(acao == 'stop'){
+        soundEnviando.pause();
+    }
+    else{
+        soundEnviando.play();
+    }
+}
+
+/*
+
+
+
+{{/js}}
