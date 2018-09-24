@@ -36,6 +36,15 @@ require_once($CFG->dirroot . '/files/renderer.php');
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class files_renderer extends \core_files_renderer {
+
+    public function render_form_filemanager($fm) {
+        $context = (array) $fm;
+        $context['sesskey'] = sesskey();
+        return $this->render_from_template('core/filemanager_ucf', $context);
+        //  . "<pre>" . var_export($context, true) . "</pre>"; 
+    }
+
+
     /**
      * FileManager JS template for window with file information/actions.
      *
@@ -138,3 +147,37 @@ class files_renderer extends \core_files_renderer {
         return $this->render_from_template('core/filemanager_processexistingfile', []);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
