@@ -80,7 +80,7 @@ class core_renderer extends \core_renderer {
         $header->navbar = $this->navbar();
         $header->pageheadingbutton = $this->page_heading_button();
         $header->courseheader = $this->course_header();
-        return $this->render_from_template('theme_ledor/header', $header);
+        return $this->render_from_template('theme_ledor/full_header', $header);
     }
 
     /**
@@ -128,13 +128,13 @@ class core_renderer extends \core_renderer {
      */
     public function context_header($headerinfo = null, $headinglevel = 1) {
         global $SITE;
-
+        /*
         if ($this->should_display_main_logo($headinglevel)) {
             $sitename = format_string($SITE->fullname, true, array('context' => context_course::instance(SITEID)));
             return html_writer::div(html_writer::empty_tag('img', [
                 'src' => $this->get_logo_url(null, 150), 'alt' => $sitename]), 'logo');
         }
-
+        */
         return parent::context_header($headerinfo, $headinglevel);
     }
 
@@ -698,5 +698,13 @@ class core_renderer extends \core_renderer {
      */
     public function secure_login_info() {
         return $this->login_info(false);
+    }
+    
+    protected function render_context_header($contextheader) {
+        if (!isset($contextheader->heading)) {
+            return $this->page->heading;
+        } else {
+            return $contextheader->heading;
+        }
     }
 }

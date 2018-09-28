@@ -138,3 +138,13 @@ body {
 .avatar.current {
     display: none;
 }
+
+// Blocos
+
+.block_participants {
+    display: none;
+}
+
+[data-region*="blocks-column"] {
+    display: none;
+}
