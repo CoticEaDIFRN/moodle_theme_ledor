@@ -36,105 +36,305 @@ require_once($CFG->dirroot . '/files/renderer.php');
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class files_renderer extends \core_files_renderer {
+
+    public function render_form_filemanager($fm) {
+        $context = (array) $fm;
+        $context['sesskey'] = sesskey();
+        return $this->render_from_template('core/filemanager_ucf', $context);
+        //  . "<pre>" . var_export($context, true) . "</pre>"; 
+    }
+
+
     /**
      * FileManager JS template for window with file information/actions.
      *
      */
-    protected function fm_js_template_fileselectlayout() {
-        $context = [
-            'helpicon' => $this->help_icon('setmainfile', 'repository')
-        ];
-        return $this->render_from_template('core/filemanager_fileselect', $context);
-    }
+    
+    // protected function fm_js_template_fileselectlayout() {
+    //     $context = [
+    //         'helpicon' => $this->help_icon('setmainfile', 'repository')
+    //     ];
+    //     return $this->render_from_template('core/filemanager_fileselect', $context);
+    // }
 
-    /**
-     * FileManager JS template for popup confirm dialogue window.
-     *
-     * @return string
-     */
-    protected function fm_js_template_confirmdialog() {
-        return $this->render_from_template('core/filemanager_confirmdialog', []);
-    }
+    // /**
+    //  * FileManager JS template for popup confirm dialogue window.
+    //  *
+    //  * @return string
+    //  */
+    // protected function fm_js_template_confirmdialog() {
+    //    protected function fp_js_template_uploadform() {
+    //     return $this->render_from_template('core/filemanager_uploadform', []);
+    // }
 
-    /**
-     * Template for FilePicker with general layout (not QuickUpload).
-     *
-     *
-     * @return string
-     */
-    protected function fp_js_template_generallayout() {
-        return $this->render_from_template('core/filemanager_modal_generallayout', []);
-    }
+    // /**
+    //  * FilePicker JS template for repository login form including templates for each element type
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_loginform() {
+    //     return $this->render_from_template('core/filemanager_loginform', []);
+    // }
 
-    /**
-     * Returns html for displaying one file manager
-     *
-     * @param form_filemanager $fm
-     * @return string
-     */
-    protected function fm_print_generallayout($fm) {
-        $context = [
-            'client_id' => $fm->options->client_id,
-            'helpicon' => $this->help_icon('setmainfile', 'repository'),
-            'restrictions' => $this->fm_print_restrictions($fm)
-        ];
-        return $this->render_from_template('core/filemanager_page_generallayout', $context);
-    }
+    // /**
+    //  * FilePicker JS template for window appearing to select a file.
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_selectlayout() {
+    //     return $this->render_from_template('core/filemanager_selectlayout', []);
+    // }
 
-    /**
-     * Returns HTML for default repository searchform to be passed to Filepicker
-     *
-     * This will be used as contents for search form defined in generallayout template
-     * (form with id {TOOLSEARCHID}).
-     * Default contents is one text input field with name="s"
-     */
-    public function repository_default_searchform() {
-        return $this->render_from_template('core/filemanager_default_searchform', []);
-    }
+    // /**
+    //  * FilePicker JS template for popup dialogue window asking for action when file with the same name already exists
+    //  * (multiple-file version).
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_processexistingfilemultiple() {
+    //     return $this->render_from_template('core/filemanager_processexistingfilemultiple', []);
+    // }
 
-    /**
-     * FilePicker JS template for 'Upload file' repository
-     *
-     * @return string
-     */
-    protected function fp_js_template_uploadform() {
-        return $this->render_from_template('core/filemanager_uploadform', []);
-    }
+    // /**
+    //  * FilePicker JS template for popup dialogue window asking for action when file with the same name already exists.
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_processexistingfile() {
+    //     return $this->render_from_template('core/filemanager_processexistingfile', []);
+    // }der_from_template('core/filemanager_confirmdialog', []);
+    // }
 
-    /**
-     * FilePicker JS template for repository login form including templates for each element type
-     *
-     * @return string
-     */
-    protected function fp_js_template_loginform() {
-        return $this->render_from_template('core/filemanager_loginform', []);
-    }
+    // /* protected function fp_js_template_uploadform() {
+    //     return $this->render_from_template('core/filemanager_uploadform', []);
+    // }
 
-    /**
-     * FilePicker JS template for window appearing to select a file.
-     *
-     * @return string
-     */
-    protected function fp_js_template_selectlayout() {
-        return $this->render_from_template('core/filemanager_selectlayout', []);
-    }
+    // /**
+    //  * FilePicker JS template for repository login form including templates for each element type
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_loginform() {
+    //     return $this->render_from_template('core/filemanager_loginform', []);
+    // }
 
-    /**
-     * FilePicker JS template for popup dialogue window asking for action when file with the same name already exists
-     * (multiple-file version).
-     *
-     * @return string
-     */
-    protected function fp_js_template_processexistingfilemultiple() {
-        return $this->render_from_template('core/filemanager_processexistingfilemultiple', []);
-    }
+    // /**
+    //  * FilePicker JS template for window appearing to select a file.
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_selectlayout() {
+    //     return $this->render_from_template('core/filemanager_selectlayout', []);
+    // }
 
-    /**
-     * FilePicker JS template for popup dialogue window asking for action when file with the same name already exists.
-     *
-     * @return string
-     */
-    protected function fp_js_template_processexistingfile() {
-        return $this->render_from_template('core/filemanager_processexistingfile', []);
-    }
+    // /**
+    //  * FilePicker JS template for popup dialogue window asking for action when file with the same name already exists
+    //  * (multiple-file version).
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_processexistingfilemultiple() {
+    //     return $this->render_from_template('core/filemanager_processexistingfilemultiple', []);
+    // }
+
+    // /**
+    //  * FilePicker JS template for popup dialogue window asking for action when file with the same name already exists.
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_processexistingfile() {
+    //     return $this->render_from_template('core/filemanager_processexistingfile', []);
+    // }
+    //  * protected function fp_js_template_uploadform() {
+    //     return $this->render_from_template('core/filemanager_uploadform', []);
+    // }
+
+    // /**
+    //  * FilePicker JS template for repository login form including templates for each element type
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_loginform() {
+    //     return $this->render_from_template('core/filemanager_loginform', []);
+    // }
+
+    // /**
+    //  * FilePicker JS template for window appearing to select a file.
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_selectlayout() {
+    //     return $this->render_from_template('core/filemanager_selectlayout', []);
+    // }
+
+    // /**
+    //  * FilePicker JS template for popup dialogue window asking for action when file with the same name already exists
+    //  * (multiple-file version).
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_processexistingfilemultiple() {
+    //     return $this->render_from_template('core/filemanager_processexistingfilemultiple', []);
+    // }
+
+    // /**
+    //  * FilePicker JS template for popup dialogue window asking for action when file with the same name already exists.
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_processexistingfile() {
+    //     return $this->render_from_template('core/filemanager_processexistingfile', []);
+    // }icker with general layout (not QuickUpload).
+    //  * protected function fp_js_template_uploadform() {
+    //     return $this->render_from_template('core/filemanager_uploadform', []);
+    // }
+
+    // /**
+    //  * FilePicker JS template for repository login form including templates for each element type
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_loginform() {
+    //     return $this->render_from_template('core/filemanager_loginform', []);
+    // }
+
+    // /**
+    //  * FilePicker JS template for window appearing to select a file.
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_selectlayout() {
+    //     return $this->render_from_template('core/filemanager_selectlayout', []);
+    // }
+
+    // /**
+    //  * FilePicker JS template for popup dialogue window asking for action when file with the same name already exists
+    //  * (multiple-file version).
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_processexistingfilemultiple() {
+    //     return $this->render_from_template('core/filemanager_processexistingfilemultiple', []);
+    // }
+
+    // /**
+    //  * FilePicker JS template for popup dialogue window asking for action when file with the same name already exists.
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_processexistingfile() {
+    //     return $this->render_from_template('core/filemanager_processexistingfile', []);
+    // }
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_generallayout() {
+    //     return $this->render_from_template('core/filemanager_modal_generallayout', []);
+    // }
+
+    // /**
+    //  * Returns html for displaying one file manager
+    //  *
+    //  * @param form_filemanager $fm
+    //  * @return string
+    //  */
+    // protected function fm_print_generallayout($fm) {
+    //     $context = [
+    //         'client_id' => $fm->options->client_id,
+    //         'helpicon' => $this->help_icon('setmainfile', 'repository'),
+    //         'restrictions' => $this->fm_print_restrictions($fm)
+    //     ];
+    //     return $this->render_from_template('core/filemanager_page_generallayout', $context);
+    // }
+
+    // /**
+    //  * Returns HTML for default repository searchform to be passed to Filepicker
+    //  *
+    //  * This will be used as contents for search form defined in generallayout template
+    //  * (form with id {TOOLSEARCHID}).
+    //  * Default contents is one text input field with name="s"
+    //  */
+    // public function repository_default_searchform() {
+    //     return $this->render_from_template('core/filemanager_default_searchform', []);
+    // }
+
+    // /**
+    //  * FilePicker JS template for 'Upload file' repository
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_uploadform() {
+    //     return $this->render_from_template('core/filemanager_uploadform', []);
+    // }
+
+    // /**
+    //  * FilePicker JS template for repository login form including templates for each element type
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_loginform() {
+    //     return $this->render_from_template('core/filemanager_loginform', []);
+    // }
+
+    // /**
+    //  * FilePicker JS template for window appearing to select a file.
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_selectlayout() {
+    //     return $this->render_from_template('core/filemanager_selectlayout', []);
+    // }
+
+    // /**
+    //  * FilePicker JS template for popup dialogue window asking for action when file with the same name already exists
+    //  * (multiple-file version).
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_processexistingfilemultiple() {
+    //     return $this->render_from_template('core/filemanager_processexistingfilemultiple', []);
+    // }
+
+    // /**
+    //  * FilePicker JS template for popup dialogue window asking for action when file with the same name already exists.
+    //  *
+    //  * @return string
+    //  */
+    // protected function fp_js_template_processexistingfile() {
+    //     return $this->render_from_template('core/filemanager_processexistingfile', []);
+    // }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
