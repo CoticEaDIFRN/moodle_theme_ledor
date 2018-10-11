@@ -63,7 +63,7 @@ $font-size-base: 0.9375rem
 
 // Space to use Bootstrap mixins and extends.
 .navbar {
-  
+  @include shadow();
 }
 
 Bootswatches

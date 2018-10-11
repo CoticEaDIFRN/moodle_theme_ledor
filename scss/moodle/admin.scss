@@ -691,7 +691,7 @@
         padding: 5px;
         margin: 10px 0;
 
-        
+        @include border-radius(5px);
 
         .info {
             display: inline-block;

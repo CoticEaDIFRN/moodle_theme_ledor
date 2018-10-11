@@ -34,7 +34,7 @@ $content-header-footer-height: $region-header-height + $region-footer-height;
         }
 
         .popover-region-container {
-            
+            @include invisible();
 
             height: 0;
             overflow: hidden;
@@ -83,7 +83,7 @@ $content-header-footer-height: $region-header-height + $region-footer-height;
 }
 
 .popover-region-container {
-    
+    @include visible();
 
     position: absolute;
     right: 0;
@@ -182,7 +182,7 @@ $content-header-footer-height: $region-header-height + $region-footer-height;
 
         &.collapsed {
             .popover-region-container {
-                
+                @include invisible();
 
                 height: 0;
                 overflow: hidden;
@@ -335,7 +335,7 @@ $content-header-footer-height: $region-header-height + $region-footer-height;
     }
 
     .all-notifications {
-        
+        @include visible();
 
         height: auto;
         overflow: hidden;

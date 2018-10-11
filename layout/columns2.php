@@ -51,5 +51,6 @@ $templatecontext = [
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu)
 ];
 
-// $templatecontext['flatnavigation'] = $PAGE->flatnav;
-    echo $OUTPUT->render_from_template('theme_ledor/columns2', get_ledor_template_context());
+$templatecontext['flatnavigation'] = $PAGE->flatnav;
+echo $OUTPUT->render_from_template('theme_ledor/columns2', $templatecontext);
+

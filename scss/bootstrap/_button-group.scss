@@ -13,6 +13,9 @@
 
     // Bring the hover, focused, and "active" buttons to the front to overlay
     // the borders properly
+    @include hover {
+      z-index: 1;
+    }
     &:focus,
     &:active,
     &.active {
@@ -48,16 +51,21 @@
   // Reset rounded corners
   > .btn:not(:last-child):not(.dropdown-toggle),
   > .btn-group:not(:last-child) > .btn {
+    @include border-right-radius(0);
   }
 
   > .btn:not(:first-child),
   > .btn-group:not(:first-child) > .btn {
+    @include border-left-radius(0);
   }
 }
 
 // Sizing
 //
 // Remix the default button sizing classes into new ones for easier manipulation.
+
+.btn-group-sm > .btn { @extend .btn-sm; }
+.btn-group-lg > .btn { @extend .btn-lg; }
 
 
 //
@@ -87,9 +95,11 @@
 // The clickable button for toggling the menu
 // Set the same inset shadow as the :active state
 .btn-group.show .dropdown-toggle {
+  @include box-shadow($btn-active-box-shadow);
 
   // Show no shadow for `.btn-link` since it has no other button styles.
   &.btn-link {
+    @include box-shadow(none);
   }
 }
 
@@ -119,10 +129,12 @@
   // Reset rounded corners
   > .btn:not(:last-child):not(.dropdown-toggle),
   > .btn-group:not(:last-child) > .btn {
+    @include border-bottom-radius(0);
   }
 
   > .btn:not(:first-child),
   > .btn-group:not(:first-child) > .btn {
+    @include border-top-radius(0);
   }
 }
 

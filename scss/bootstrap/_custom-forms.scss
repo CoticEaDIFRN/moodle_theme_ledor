@@ -26,8 +26,8 @@
 
   &:checked ~ .custom-control-label::before {
     color: $custom-control-indicator-checked-color;
-    
-    
+    @include gradient-bg($custom-control-indicator-checked-bg);
+    @include box-shadow($custom-control-indicator-checked-box-shadow);
   }
 
   &:focus ~ .custom-control-label::before {
@@ -38,7 +38,7 @@
   &:active ~ .custom-control-label::before {
     color: $custom-control-indicator-active-color;
     background-color: $custom-control-indicator-active-bg;
-    
+    @include box-shadow($custom-control-indicator-active-box-shadow);
   }
 
   &:disabled {
@@ -71,7 +71,7 @@
     content: "";
     user-select: none;
     background-color: $custom-control-indicator-bg;
-    
+    @include box-shadow($custom-control-indicator-box-shadow);
   }
 
   // Foreground (icon)
@@ -96,12 +96,12 @@
 
 .custom-checkbox {
   .custom-control-label::before {
-    
+    @include border-radius($custom-checkbox-indicator-border-radius);
   }
 
   .custom-control-input:checked ~ .custom-control-label {
     &::before {
-      
+      @include gradient-bg($custom-control-indicator-checked-bg);
     }
     &::after {
       background-image: $custom-checkbox-indicator-icon-checked;
@@ -110,8 +110,8 @@
 
   .custom-control-input:indeterminate ~ .custom-control-label {
     &::before {
-      
-      
+      @include gradient-bg($custom-checkbox-indicator-indeterminate-bg);
+      @include box-shadow($custom-checkbox-indicator-indeterminate-box-shadow);
     }
     &::after {
       background-image: $custom-checkbox-indicator-icon-indeterminate;
@@ -139,7 +139,7 @@
 
   .custom-control-input:checked ~ .custom-control-label {
     &::before {
-      
+      @include gradient-bg($custom-control-indicator-checked-bg);
     }
     &::after {
       background-image: $custom-radio-indicator-icon-checked;
@@ -275,8 +275,8 @@
   color: $custom-file-color;
   background-color: $custom-file-bg;
   border: $custom-file-border-width solid $custom-file-border-color;
-  
-  
+  @include border-radius($custom-file-border-radius);
+  @include box-shadow($custom-file-box-shadow);
 
   &::after {
     position: absolute;
@@ -290,8 +290,8 @@
     line-height: $custom-file-line-height;
     color: $custom-file-button-color;
     content: "Browse";
-    
+    @include gradient-bg($custom-file-button-bg);
     border-left: $custom-file-border-width solid $custom-file-border-color;
-    
+    @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
   }
 }

@@ -6,9 +6,9 @@
         /* Use card styles but avoid extend because that brings in too much. */
         &.section_level {
             background-color: $card-bg;
-            
+            @include border-radius($card-border-radius);
             border: $card-border-width solid $card-border-color;
-            
+            @include clearfix;
             padding: $card-spacer-x;
             margin-bottom: $card-spacer-x;
         }
@@ -106,9 +106,9 @@
     }
 
     background-color: $card-bg;
-    
+    @include border-radius($card-border-radius);
     border: $card-border-width solid $card-border-color;
-    
+    @include clearfix;
     padding: $card-spacer-x;
     margin-bottom: $card-spacer-x;
 }

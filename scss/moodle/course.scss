@@ -519,7 +519,7 @@ span.editinstructions {
     text-decoration: none;
     z-index: 9999;
 
-    
+    @include box-shadow(2px 2px 5px 1px #ccc);
     border: 1px solid $state-info-border;
 }
 
@@ -536,8 +536,8 @@ span.editinstructions {
     color: $state-info-text;
     z-index: 1; // Required in order to have this above relatively positioned course content@mixin
 
-    
-    
+    @include box-shadow(2px 2px 5px 1px #ccc);
+    @include border-radius(8px);
 }
 
 .dndupload-preview {
@@ -550,8 +550,8 @@ span.editinstructions {
 
 .dndupload-progress-outer {
     background-color: $progress-bg;
-    
-    
+    @include border-radius($progress-border-radius);
+    @include box-shadow($progress-box-shadow);
     display: block;
     width: 100%;
     height: $spacer-y;
@@ -560,7 +560,7 @@ span.editinstructions {
 
 .dndupload-progress-inner {
     background-color: $progress-bar-color;
-    
+    @include border-left-radius($progress-border-radius);
     display: inline-block;
     height: $spacer-y;
 }
@@ -785,7 +785,7 @@ span.editinstructions {
     margin-bottom: 15px;
     border: 1px dotted #ddd;
 
-    
+    @include border-radius(4px);
     padding: 5px;
 }
 
@@ -1053,13 +1053,13 @@ span.editinstructions {
         text-align: center;
 
         .yui3-button {
-            
+            @include button-variant($info, $info);
             border: 0;
             margin: 0.4rem 0.2rem 0.45rem;
             font-size: 10.4px;
 
             &.active-page {
-                
+                @include button-variant($primary, $primary);
             }
         }
     }

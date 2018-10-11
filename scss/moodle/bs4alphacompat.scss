@@ -110,7 +110,7 @@ $tag-font-weight: bold !default;
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
-    
+    @include border-radius();
 
     // Empty tags collapse automatically
     &:empty {
@@ -131,36 +131,46 @@ $tag-font-weight: bold !default;
 //     position: static;
 // }
 
+@mixin tag-variant($color) {
+    background-color: $color;
+
+    &[href] {
+        @include hover-focus {
+            background-color: darken($color, 10%);
+        }
+    }
+}
+
 .tag-default {
-    
+    @include tag-variant($tag-default-bg);
 }
 
 .tag-primary {
-    
+    @include tag-variant($tag-primary-bg);
 }
 
 .tag-success {
-    
+    @include tag-variant($tag-success-bg);
 }
 
 .tag-info {
-    
+    @include tag-variant($tag-info-bg);
 }
 
 .tag-warning {
-    
+    @include tag-variant($tag-warning-bg);
 }
 
 .tag-danger {
-    
+    @include tag-variant($tag-danger-bg);
 }
 
 @mixin pull-left() {
-    
+    @include float-left();
 }
 
 @mixin pull-right() {
-    
+    @include float-right();
 }
 
 .custom-select {
@@ -208,6 +218,7 @@ $bs4aspacers: map-merge((
 // Adding compatibility for col-xs-* classes.
 @for $i from 1 through $grid-columns {
   .col-xs-#{$i} {
+    @extend .col-#{$i};
   }
 }
 
@@ -216,7 +227,7 @@ input[disabled] {
 }
 
 .row-fluid {
-  
+  @include make-row();
 }
 
 // These have been removed in BS4 Stable. Adding in so RTL dropdowns will work.

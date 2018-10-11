@@ -74,10 +74,10 @@ $theme-colors: (
 // @import "fontawesome/variables";
 
 // Import All of Bootstrap
-@import "bootstrap/functions";
-@import "bootstrap/variables";
+//@import "bootstrap/functions";
+//@import "bootstrap/variables";
 
-.text-muted, 
+.text-muted,
 .text-warning, .text-success, .text-danger, .text-info,
 .tag-success, .tag-warning, .tag-danger, .tag-info,
 .alert-success, .alert-warning, .alert-danger, .alert-info,
@@ -98,6 +98,7 @@ $theme-colors: (
 
 body {
     -webkit-font-smoothing: antialiased;
+    margin-left: 450px;
 }
 
 .navbar {
@@ -147,4 +148,24 @@ body {
 
 [data-region*="blocks-column"] {
     display: none;
+}
+// Pagina Principal
+.page-header-headings h1{
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+ul{
+  list-style-type: none;
+}
+
+a{
+  font-family: Arial;
+  font-size: 21px;
+  color: #1D85A3;
+  line-height: 33px;
+}
+.no-overflow {
+    width: 700px;
 }
