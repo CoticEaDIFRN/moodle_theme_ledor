@@ -700,7 +700,7 @@ class core_renderer extends \core_renderer {
         return $this->login_info(false);
     }
     
-    protected function render_context_header($contextheader) {
+    protected function render_context_header(\context_header $contextheader) {
         if (!isset($contextheader->heading)) {
             return $this->page->heading;
         } else {

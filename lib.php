@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
  * @param theme_config $theme The theme config object.
  * @return string
  */
-function theme_boost_eadifrn_get_main_scss_content($theme) {
+function theme_ledor_get_main_scss_content($theme) {
     global $CFG;
 
     $scss = '';
