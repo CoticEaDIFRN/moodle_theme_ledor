@@ -99,7 +99,7 @@ class core_renderer extends \core_renderer {
                 $output .= "<meta name=\"description\" content=\"$summary\" />\n";
             }
         }
-        $output .= '<link rel="stylesheet" type="text/css" href="/moodle35/theme/ledor/style/ledor.css" />';
+        $output .= '<link rel="stylesheet" type="text/css" href="../theme/ledor/style/ledor.css" />';
         return $output;
     }
 
