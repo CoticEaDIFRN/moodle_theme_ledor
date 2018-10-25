@@ -50,48 +50,26 @@
 }}
 {{> theme_ledor/head }}
 
-<body {{{ bodyattributes }}}
+<body {{{ bodyattributes }}}>
+  {{{ output.full_header }}}
 
-{{! <div id="page-wrapper"> }}
-    {{! {{>theme_ledor/navbar } } }}
-    {{! <div id="page" class="container-fluid"> }}
-        {{{ output.full_header }}}
-        {{{ output.standard_top_of_body_html }}}
+  <div id="page-content" class="row">
+      <section id="region-main" {{#hasblocks}}class="has-blocks mb-3"{{/hasblocks}}>
+          {{> theme_ledor/course_summary }}
+          {{{ output.main_content }}}
+          {{#in_course_page}}
+          <br />{{{ output.activity_navigation }}}
+          <br />{{{ output.course_content_footer }}}
+          {{/in_course_page}}
+      </section>
+      {{#hasblocks}}
+      <section data-region="blocks-column" class="d-print-none">
+          {{{ sidepreblocks }}}
+      </section>
+      {{/hasblocks}}
+  </div>
 
-        <div id="page-content" class="row">
-            {{! { { #hasregionmainsettingsmenu } }
-            <div id="region-main-settings-menu" class="d-print-none { {#hasblocks} }has-blocks{ {/hasblocks} }">
-                <div> { { { output.region_main_settings_menu } } } </div>/
-            </div>
-            { {/hasregionmainsettingsmenu} } }}
-                
-            <section id="region-main" {{#hasblocks}}class="has-blocks mb-3"{{/hasblocks}}>
-                {{> theme_ledor/course_summary }}
-                {{{ output.main_content }}}
-                <br />{{{ output.activity_navigation }}}
-                {{! <br />COURSE_CONTENT_HEADER{ { { output.course_content_header } } }/COURSE_CONTENT_HEADER imprime as notificações }}
-                <br />{{{ output.course_content_footer }}}
-                <p>O conteúdo acabou. Início do menu.</p>
-            </section>
-            {{#hasblocks}}
-            <section data-region="blocks-column" class="d-print-none">
-                {{{ sidepreblocks }}}
-            </section>
-            {{/hasblocks}}
-        </div>
-    {{! </div> }}
-{{! </div> }}
-
-{{> theme_ledor/footer }}
-<style>
-#completionprogressid{display: none};
-</style>
+  {{> theme_ledor/footer }}
 
 </body>
 </html>
-{{#js}}
-require(['theme_ledor/loader']);
-require(['theme_ledor/drawer'], function(mod) {
-    mod.init();
-});
-{{/js}}

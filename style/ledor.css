@@ -1,0 +1,49 @@
+@charset "UTF-8";
+#page-fullheader {
+  color: #000000;
+  font-family: Arial;
+  font-size: 1.5em;
+}
+#page-fullheader > p{
+  font-weight: bold;
+}
+#page-footer {
+  color: #1D85A3;
+}
+#completionprogressid{
+  display: none
+};
+div#page-content{
+  font-family: Arial;
+
+}
+a.sr-only.sr-only-focusable{
+  color: #1D85A3;
+  font-size: 0.7em;
+}
+p.h2{
+  color: #000000;
+  font-family: Arial;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+ol{
+  color: #1D85A3;
+  font-family: Arial;
+  font-size: 1.5em;
+  margin-left: -40px;
+}
+
+li {
+    list-style-type: none;
+
+}
+span.media-body{
+  color: #1D85A3;
+}
+a:-webkit-any-link{
+  color: #1D85A3;
+}
+.course-content{
+  font-family: Arial;
+}

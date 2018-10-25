@@ -36,7 +36,7 @@ function theme_ledor_get_main_scss_content($theme) {
     $scss = '';
     $filename = !empty($theme->settings->preset) ? $theme->settings->preset : null;
     $fs = get_file_storage();
-    
+
     $context = context_system::instance();
     if ($filename == 'plain.scss') {
         // We still load the default preset files directly from the boost theme. No sense in duplicating them.
@@ -198,6 +198,8 @@ function get_ledor_commom_moodle_template_context()
     if (is_siteadmin()){
       $inte_suap = "show_suap";
     }
+    // TODO: quando tem que mostrar os blocos mesmo?
+    $hasblocks = false;
     return [
         'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
         'output' => $OUTPUT,
@@ -274,12 +276,12 @@ class ledor_menu_item {
     }
 }
 
-function get_ledor_bottom_menu() 
+function get_ledor_bottom_menu()
 {
     /***
      * Isto deveria vir de configuração do tema salvo no banco.
      */
-    global $PAGE, $COURSE, $USER;    
+    global $PAGE, $COURSE, $USER;
     $result = [];
     if ($PAGE->pagelayout == "course" || $PAGE->pagelayout == "incourse") {
         $result[] = new ledor_menu_item("Notas", "/grade/report/index.php", ['id'=>$COURSE->id]);

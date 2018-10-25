@@ -99,7 +99,7 @@ class core_renderer extends \core_renderer {
                 $output .= "<meta name=\"description\" content=\"$summary\" />\n";
             }
         }
-
+        $output .= '<link rel="stylesheet" type="text/css" href="/moodle35/theme/ledor/style/ledor.css" />';
         return $output;
     }
 
@@ -699,7 +699,7 @@ class core_renderer extends \core_renderer {
     public function secure_login_info() {
         return $this->login_info(false);
     }
-    
+
     protected function render_context_header(\context_header $contextheader) {
         if (!isset($contextheader->heading)) {
             return $this->page->heading;
