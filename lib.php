@@ -195,9 +195,8 @@ function get_ledor_commom_moodle_template_context()
     $not_within_course_page = $PAGE->pagelayout != "incourse";
     $course_name = $COURSE->fullname;
     $course_code = $COURSE->shortname;
-    if (is_siteadmin()){
-      $inte_suap = "show_suap";
-    }
+    $inte_suap = is_siteadmin() ? "show_suap"  : '';
+
     // TODO: quando tem que mostrar os blocos mesmo?
     $hasblocks = false;
     return [
