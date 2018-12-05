@@ -90,7 +90,7 @@ class core_renderer extends \core_renderer {
      * @return string HTML fragment.
      */
     public function standard_head_html() {
-        global $SITE, $PAGE;
+        global $SITE, $PAGE, $CFG;
 
         $output = parent::standard_head_html();
         if ($PAGE->pagelayout == 'frontpage') {
@@ -99,7 +99,7 @@ class core_renderer extends \core_renderer {
                 $output .= "<meta name=\"description\" content=\"$summary\" />\n";
             }
         }
-        $output .= '<link rel="stylesheet" type="text/css" href="../theme/ledor/style/ledor.css" />';
+        $output .= "<link rel='stylesheet' type='text/css' href='{$CFG->wwwroot}/theme/ledor/style/ledor.css' />";
         return $output;
     }
 
