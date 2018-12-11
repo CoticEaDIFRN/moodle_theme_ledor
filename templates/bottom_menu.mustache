@@ -15,9 +15,9 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template core/navbar
+    @template theme_ledor/flat_navigation
 
-    Navbar template.
+    Display the flat navigation for the ledor theme
 
     Classes required for JS:
     * none
@@ -26,35 +26,38 @@
     * none
 
     Context variables required for this template:
-    * get_items - array of items
-      * has_action - boolean
+    * flatnavigation - array of flat_navigation_nodes
+      * showdivider - boolean
       * action - string
-      * get_title - string
+      * isactive - boolean
+      * get_indent - integer
+      * is_section - boolean
       * text - HTML
 
     Example context (json):
     {
-        "get_items": [
+        "flatnavigation" : [
             {
-                "has_action": true,
+                "showdivider": false,
                 "action": "#",
-                "get_title": "Test title",
-                "text": "First & fresh"
-            },
-            {
-                "has_action": true,
+                "isactive": true,
+                "get_indent": 1,
+                "is_section": false,
+                "text": "First"
+            },{
+                "showdivider": true,
                 "action": "#",
-                "get_title": "Second item & a title",
-                "text": "Second item"
-            },
-            {
-                "has_action": false,
-                "text": "Third item"
-            },
-            {
-                "has_action": false,
-                "text": "Fourth & last"
+                "isactive": false,
+                "get_indent": 0,
+                "is_section": true,
+                "text": "Last &amp; Second"
             }
         ]
     }
 }}
+<p class='h2'>Menu principal</p>
+<nav>
+<ol>
+{{# bottom_menu }}<li><a href="{{{url}}}">{{label}}</a></li>{{/ bottom_menu }}
+</ol>
+</nav>

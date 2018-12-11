@@ -51,54 +51,31 @@
 {{> theme_ledor/head }}
 
 <body {{{ bodyattributes }}}>
+  <a class="sr-only sr-only-focusable" href="#maincontent">Ir para o conteúdo principal</a>
+  {{> theme_ledor/footer }}
+  <header id="page-fullheader">
+    <p>{{{contextheader}}}</p>
+  </header>
+  <div id="page-content" class="row">
+      <section id="region-main" {{#hasblocks}}class="has-blocks mb-3"{{/hasblocks}}>
+          {{> theme_ledor/course_summary }}
+          {{{ output.main_content }}}
+          {{#in_course_page}}
+          <br />{{{ output.activity_navigation }}}
+          <br />{{{ output.course_content_footer }}}
+          {{/in_course_page}}
+      </section>
+      {{#hasblocks}}
+      <section data-region="blocks-column" class="d-print-none">
+          {{{ sidepreblocks }}}
+      </section>
+      {{/hasblocks}}
+  </div>
 
-<div id="page-wrapper">
-
-    {{{ output.standard_top_of_body_html }}}
-
-    {{>theme_ledor/navbar}}
-
-    <div id="page" class="container-fluid">
-        {{{ output.full_header }}}
-
-        <div id="page-content" class="row">
-            <div id="region-main-box" class="col-12">
-                {{#hasregionmainsettingsmenu}}
-                <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
-                    <div> {{{ output.region_main_settings_menu }}} </div>
-                </div>
-                {{/hasregionmainsettingsmenu}}
-                <section id="region-main" {{#hasblocks}}class="has-blocks mb-3"{{/hasblocks}}>
-                    <div class="card">
-                        <div class="card-body">
-                            {{#hasregionmainsettingsmenu}}
-                                <div class="region_main_settings_menu_proxy"></div>
-                            {{/hasregionmainsettingsmenu}}
-                            {{{ output.course_content_header }}}
-                            {{{ output.main_content }}}
-                            {{{ output.activity_navigation }}}
-                            {{{ output.course_content_footer }}}
-                        </div>
-                    </div>
-                </section>
-                {{#hasblocks}}
-                <section data-region="blocks-column" class="d-print-none">
-                    {{{ sidepreblocks }}}
-                </section>
-                {{/hasblocks}}
-            </div>
-        </div>
-    </div>
-    {{> theme_ledor/nav-drawer }}
-</div>
-
-{{> theme_ledor/footer }}
+<footer id="page-footer" class="py-3 bg-dark text-light">
+        {{{ output.standard_footer_html }}}
+        {{{ output.standard_end_of_body_html }}}
+</footer>
 
 </body>
 </html>
-{{#js}}
-require(['theme_ledor/loader']);
-require(['theme_ledor/drawer'], function(mod) {
-    mod.init();
-});
-{{/js}}

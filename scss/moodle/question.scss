@@ -63,11 +63,11 @@
     letter-spacing: 1px;
     text-shadow: 1px 1px 1px #fff;
 
-    @include border-top-radius(10px);
+    
     border: 1px solid #ccc;
     border-bottom: 1px solid #bbb;
 
-    @include gradient-y(#fff, #ccc);
+    
 }
 
 #qtypechoicecontainer {
@@ -75,11 +75,11 @@
     color: #333;
     background: #f2f2f2;
 
-    @include border-radius(10px);
+    
     border: 1px solid #ccc;
     border-top: 0 none;
 
-    @include box-shadow(5px 5px 20px 0 #666);
+    
 }
 
 #qtypechoicecontainer #chooseqtype {
@@ -118,7 +118,7 @@
 #chooseqtype .selected {
     background-color: #fff;
 
-    @include box-shadow(0 0 10px 0 #ccc);
+    
 }
 
 #chooseqtype .instruction,
@@ -253,7 +253,7 @@ body.path-question-type {
     background-color: $gray-lighter;
     border: 1px solid darken($gray-lighter, 7%);
 
-    @include border-radius(2px);
+    
 }
 
 .que h3.no {
@@ -462,7 +462,7 @@ body.path-question-type {
     color: #444;
     text-shadow: none;
 
-    @include border-top-radius(4px);
+    
     margin: 0 -10px 0 -10px;
     padding: 2px 10px 2px 10px;
     background: transparent; /* Old browsers */
@@ -555,7 +555,7 @@ body.path-question-type {
 #page-mod-quiz-edit div.quizpage .pagecontent {
     border: 1px solid #ddd;
 
-    @include border-radius(2px);
+    
     overflow: hidden;
 }
 
@@ -600,7 +600,7 @@ body.path-question-type {
     background-color: $body-bg;
     border: 1px solid #ddd;
 
-    @include border-radius(2px);
+    
     overflow: hidden;
 }
 
@@ -642,14 +642,4 @@ body.path-question-type .mform fieldset.hidden {
 
 .tag-condition-container {
     position: relative;
-}
-
-@include media-breakpoint-down(sm) {
-    .que .info {
-        float: none;
-        width: auto;
-    }
-    .que .content {
-        margin: 0;
-    }
 }

@@ -293,7 +293,7 @@ form.popupform div {
 
 // Accessibility: text 'seen' by screen readers but not visual users.
 .accesshide {
-    @include sr-only();
+    
 }
 
 span.hide,
@@ -633,7 +633,7 @@ img.user-image {
 
 .path-tag .tagarea .controls,
 .path-tag .tagarea .taggeditems {
-    @include clearfix();
+    
 }
 
 .path-tag .tagarea .controls,
@@ -1339,7 +1339,7 @@ body#page-lib-editor-tinymce-plugins-moodlemedia-preview {
     padding: 0;
     background: #f2f2f2;
 
-    @include border-bottom-radius(10px);
+    
 }
 /* Center the submit buttons within the area */
 .choosercontainer #chooseform .submitbuttons {
@@ -1468,17 +1468,6 @@ body#page-lib-editor-tinymce-plugins-moodlemedia-preview {
     font-size: 24px;
 }
 
-@include media-breakpoint-down(xs) {
-    .jsenabled .choosercontainer #chooseform .alloptions {
-        max-width: 100%;
-    }
-
-    .jsenabled .choosercontainer #chooseform .instruction,
-    .jsenabled .choosercontainer #chooseform .typesummary {
-        position: static;
-    }
-}
-
 /* Form element: listing */
 .formlistingradio {
     padding-bottom: 25px;
@@ -1500,7 +1489,7 @@ body#page-lib-editor-tinymce-plugins-moodlemedia-preview {
     background-color: white;
     border: 1px solid #ddd;
 
-    @include border-radius(4px);
+    
 }
 
 .formlistingmore {
@@ -1515,14 +1504,14 @@ body#page-lib-editor-tinymce-plugins-moodlemedia-preview {
     border: 1px solid #ddd;
     color: #9da0a4;
 
-    @include border-radius(4px 0 4px 0);
+    
 }
 
 .formlistingall {
     margin: 15px 0;
     padding: 0;
 
-    @include border-radius(4px);
+    
 }
 
 .formlistingrow {
@@ -1533,7 +1522,7 @@ body#page-lib-editor-tinymce-plugins-moodlemedia-preview {
     border-right: 1px solid #e1e1e8;
     background-color: #f7f7f9;
 
-    @include border-radius(0 0 4px 4px);
+    
     padding: 6px;
     top: 50%;
     left: 50%;
@@ -2015,12 +2004,6 @@ ul {
     .nav {
         margin-right: $grid-gutter-width / 2;
         background-color: $card-bg;
-    }
-    @include media-breakpoint-down(sm) {
-        .nav {
-            margin-top: $grid-gutter-width;
-            margin-right: 0;
-        }
     }
 }
 

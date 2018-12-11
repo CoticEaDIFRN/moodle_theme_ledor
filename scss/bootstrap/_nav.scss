@@ -15,10 +15,6 @@
   display: block;
   padding: $nav-link-padding-y $nav-link-padding-x;
 
-  @include hover-focus {
-    text-decoration: none;
-  }
-
   // Disabled state lightens text
   &.disabled {
     color: $nav-link-disabled-color;
@@ -38,12 +34,6 @@
 
   .nav-link {
     border: $nav-tabs-border-width solid transparent;
-    @include border-top-radius($nav-tabs-border-radius);
-
-    @include hover-focus {
-      border-color: $nav-tabs-link-hover-border-color;
-    }
-
     &.disabled {
       color: $nav-link-disabled-color;
       background-color: transparent;
@@ -62,7 +52,7 @@
     // Make dropdown border overlap tab border
     margin-top: -$nav-tabs-border-width;
     // Remove the top rounded corners here since there is a hard edge above the menu
-    @include border-top-radius(0);
+    
   }
 }
 
@@ -73,7 +63,7 @@
 
 .nav-pills {
   .nav-link {
-    @include border-radius($nav-pills-border-radius);
+    
   }
 
   .nav-link.active,

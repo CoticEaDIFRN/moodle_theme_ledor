@@ -65,15 +65,9 @@ $blocks-plus-gutter: $blocks-column-width + ( $grid-gutter-width / 2 );
 #region-main.has-blocks {
     display: inline-block;
     width: calc(100% - #{$blocks-plus-gutter});
-    @include media-breakpoint-down(lg) {
-        width: 100%;
-    }
 }
 
 [data-region="blocks-column"] {
-    @include media-breakpoint-down(lg) {
-        width: 100%;
-    }
 }
 
 $chart-size: 70px;
@@ -191,11 +185,11 @@ $doughnut-fill-colour: $brand-warning;
     }
 
     .empty-placeholder-image-sm {
-        height: 50px;
+        display: none;
     }
 
     .empty-placeholder-image-lg {
-        height: 125px;
+        display: none;
     }
 }
 
@@ -229,7 +223,6 @@ $doughnut-fill-colour: $brand-warning;
     content: $fa-var-angle-down;
     margin-right: 0;
     font-size: 16px;
-    @extend .fa;
     width: 16px;
 }
 
@@ -238,7 +231,6 @@ $doughnut-fill-colour: $brand-warning;
     content: $fa-var-angle-right;
     font-size: 16px;
     margin-right: 0;
-    @extend .fa;
     width: 16px;
 }
 .dir-rtl {

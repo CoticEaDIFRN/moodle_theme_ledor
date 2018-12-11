@@ -376,11 +376,6 @@ div#dock {
     }
 }
 
-@include media-breakpoint-down(sm) {
-    .usertext {
-        display: none;
-    }
-}
 
 // Quiz module
 .path-mod-quiz .mod-quiz-edit-content {
@@ -567,7 +562,7 @@ $popout-header-height: 4rem;
 
 .path-mod-assign [data-region="grade-panel"] .fitem.has-popout {
     background-color: $card-bg;
-    @include border-radius($card-border-radius);
+    
     border: $card-border-width solid $card-border-color;
     padding: $card-spacer-x;
     margin-bottom: $spacer;
