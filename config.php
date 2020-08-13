@@ -79,10 +79,10 @@ $THEME->layouts = [
     ),
     // My dashboard page.
     'mydashboard' => array(
-        'file' => 'columns2.php',
-        'regions' => array('side-pre'),
-        'defaultregion' => 'side-pre',
-        'options' => array('nonavbar' => true, 'langmenu' => true),
+        'file' => 'mydashboard.php',
+        'regions' => [],
+        'defaultregion' => [],
+        'options' => [],
     ),
     // My public page.
     'mypublic' => array(

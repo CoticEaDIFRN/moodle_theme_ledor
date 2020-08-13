@@ -208,11 +208,6 @@ function get_ledor_commom_moodle_template_context()
         'navdraweropen' => $navdraweropen,
         'regionmainsettingsmenu' => $regionmainsettingsmenu,
         'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
-        'link_calendar' => (new moodle_url('/calendar/view.php?view=month'))->out(),
-        'link_sala_aula' => (new moodle_url('/my'))->out(),
-        'link_suap' => (new moodle_url('/suap'))->out(),
-        'link_mural' => (new moodle_url('/mural'))->out(),
-        'link_secretaria' => (new moodle_url('/secretaria'))->out(),
         'in_course_page' => $in_course_page,
         'not_in_course_page' => $not_in_course_page,
         'incourse' => $COURSE,
@@ -282,19 +277,19 @@ function get_ledor_bottom_menu()
      */
     global $PAGE, $COURSE, $USER;
     $result = [];
+    $result[] = new ledor_menu_item("Página inicial", "/", []);
     if ($PAGE->pagelayout == "course" || $PAGE->pagelayout == "incourse") {
         $result[] = new ledor_menu_item("Notas", "/grade/report/index.php", ['id'=>$COURSE->id]);
         $result[] = new ledor_menu_item("Participantes", "/user/index.php", ['id'=>$COURSE->id]);
-        $result[] = new ledor_menu_item("Emblemas", "/badges/view.php", ['type'=>2, 'id'=>$COURSE->id]);
-        $result[] = new ledor_menu_item("Competências", "/admin/tool/lp/coursecompetencies.php", ['courseid'=>$COURSE->id]);
+        // $result[] = new ledor_menu_item("Emblemas", "/badges/view.php", ['type'=>2, 'id'=>$COURSE->id]);
+        // $result[] = new ledor_menu_item("Competências", "/admin/tool/lp/coursecompetencies.php", ['courseid'=>$COURSE->id]);
     }
 
-    $result[] = new ledor_menu_item("Página inicial", "/", []);
-    $result[] = new ledor_menu_item("Perfil", "/user/profile.php", ['id'=>$USER->id]);
+    $result[] = new ledor_menu_item("Meu perfil", "/user/profile.php", ['id'=>$USER->id]);
     $result[] = new ledor_menu_item("Mensagens", "/message/", []);
     $result[] = new ledor_menu_item("Notificações", "/message/output/popup/notifications.php", []);
-    $result[] = new ledor_menu_item("Calendário geral", "/calendar/", []);
-    $result[] = new ledor_menu_item("Conhecer as teclas de atalho", "/", []);
+    // $result[] = new ledor_menu_item("Calendário geral", "/calendar/", []);
+    // $result[] = new ledor_menu_item("Conhecer as teclas de atalho", "/", []);
     $result[] = new ledor_menu_item("Sair", "/login/logout.php", []);
     return new ArrayIterator($result);
 }
