@@ -24,6 +24,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2018051400;
+$plugin->version   = 2020081301;
 $plugin->requires  = 2016120503.05;
 $plugin->component = 'theme_ledor';
