@@ -25,7 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
-require_once($CFG->libdir . '/behat/lib.php');
+require_once(dirname($CFG->libdir) . '/course/externallib.php');
+require_once(dirname($CFG->libdir) . '/course/classes/external/course_summary_exporter.php');
 
 if (isloggedin()) {
     $navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
@@ -44,8 +45,13 @@ $regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
 $context = get_ledor_template_context();
 $context["hascourses"] = true;
 //var_dump(array_keys(get_defined_vars()));die();
+$requiredproperties = \core_course\external\course_summary_exporter::define_properties();
+$fields = join(',', array_keys($requiredproperties));
+$hiddencourses = get_hidden_courses_on_timeline();
+$courses = course_get_enrolled_courses_for_logged_in_user(0, 0, 'fullname', $fields, COURSE_DB_QUERY_LIMIT, [], $hiddencourses);
+// echo "<pre>";foreach ($courses as $value) {var_dump($value);}die();
 $context["inprogress"] = [];
-foreach (course_get_enrolled_courses_for_logged_in_user() as $key => $course) {
+foreach ($courses as $key => $course) {
     $context["inprogress"][] = (object)[
         "viewurl"=>new moodle_url("/course/view.php?id=:id", ['id'=>$course->id]),
         "fullname"=>$course->fullname,
@@ -66,5 +72,4 @@ order by 2", [$USER->id]);
     ["fullnamedisplay"=> "Course #2", "viewurl"=>"#"]
 ];
 */
-// echo "<pre>";foreach ($context["inprogress"] as $key => $value) {var_dump($value);}die();
 echo $OUTPUT->render_from_template('theme_ledor/mydashboard', $context);
